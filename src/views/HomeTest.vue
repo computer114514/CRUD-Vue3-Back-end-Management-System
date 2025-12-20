@@ -4,8 +4,8 @@
     <Header></Header>
     <div class="container" :class="{'content-collapse':sideBarStore.collapse}">
       <!-- :class="{'content-collapse':true/false}"" 用单引号的吗-->
-      <div class="content" >
-        <h1>Home Test Component</h1>
+      <div class="content">
+        <router-view></router-view>
       </div>
     </div>
   </div>

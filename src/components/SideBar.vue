@@ -7,35 +7,49 @@
         class="el-menu-vertical-demo"
         default-active="2"
         text-color="#fff"
-      >
-        <el-menu-item index="1">
-          <el-icon><icon-menu /></el-icon>
-        <span>系统首页</span>
-        </el-menu-item>
-        <el-sub-menu index="2">
-          <template #title>
-            <!-- template定义菜单父级标题区域 -->
-            <!-- #title是vue的具名插槽语法 -->
-            <el-icon><location /></el-icon>
-            <span>系统管理</span>
+        router>
+        <template v-for="item in menuData">
+          <template v-if="item.children">
+            <el-sub-menu :key="item.index">
+              <template #title>
+                <el-icon>
+                  <component :is="item.icon"></component>
+                </el-icon>
+                <!-- 要么直接import一个组件<zujian />这样应用
+               要么,<component is="item.icon"></component>
+               动态组件将字符串理解为一个真正的组件 -->
+                <span>{{ item.title }}</span>
+              </template>
+              <template v-for="subItem in item.children" :key="subItem.index">
+                <el-menu-item :index="subItem.index">
+                    {{ subItem.title }}
+                </el-menu-item>
+              </template>
+            </el-sub-menu>
           </template>
-          <el-menu-item index="2-1">用户管理</el-menu-item>
-          <el-menu-item index="2-2">角色管理</el-menu-item>
-          <el-menu-item index="2-3">菜单管理</el-menu-item>
-          <!-- index是什么呢？反正颜色是根据这个渲染的 -->
-        </el-sub-menu>
+          <template v-else>
+            <el-menu-item :index="item.index" :key="item.index">
+              <!-- key写在这里 -->
+                <el-icon>
+                  <component :is="item.icon"></component>
+                </el-icon>
+                <!-- 要么直接import一个组件<zujian />这样应用
+               要么,<component is="item.icon"></component>
+               动态组件将字符串理解为一个真正的组件 -->
+                <template #title>{{ item.title }}</template>
+            </el-menu-item>
+          </template>
+        </template>
       </el-menu>
       </div>
 </template>
 
 <script lang="ts" setup>
-import {
-
-  Menu as IconMenu,
-  Location,
-
-} from '@element-plus/icons-vue'
-
+// import {
+//   Menu as IconMenu,
+//   Location,
+// } from '@element-plus/icons-vue'
+import {menuData} from "./menu.ts"
 import {useSideBarStore} from "../stores/sideBar"
 
 const sideBarStore=useSideBarStore()
