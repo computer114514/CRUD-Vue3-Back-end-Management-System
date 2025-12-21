@@ -2,7 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeTest from "@/views/HomeTest.vue"
 import ManageTest from '@/views/ManageTest.vue'
 // import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
-import SystemUser from '@/views/system/SystemUser.vue'
 const routes=[{
   path:'/',
   redirect:"/manage"
@@ -11,26 +10,41 @@ const routes=[{
 },
   {
   path:"/",
+  name:'Home',
   component:HomeTest,
   // 牢牢记住，路由嵌套是需要routerview在父路由里展示的
-
   children:[
     {
       path:"/manage",
+      name:"manage",
       component:ManageTest,
+      meta:{
+        title:"系统管理",
+      }
     },
     {
       path:"/system-user",
-      // component:()=>import("@/views/system/SystemUser.vue"),
-      component:SystemUser
+      name:"system-user",
+      component:()=>import("@/views/system/SystemUser.vue"),
+      meta:{
+        title:"用户管理",
+      }
     },
     {
       path:"/system-role",
+      name:"system-role",
       component:()=>import("@/views/system/SystemRole.vue"),
+      meta:{
+        title:"角色管理",
+      }
     },
     {
       path:"/system-menu",
+      name:"system-menu",
       component:()=>import("@/views/system/SystemMenu.vue"),
+      meta:{
+        title:"菜单管理",
+      }
     }
   ]
 }

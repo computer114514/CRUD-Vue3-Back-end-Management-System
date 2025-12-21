@@ -3,6 +3,7 @@
     <SideBar></SideBar>
     <Header></Header>
     <div class="container" :class="{'content-collapse':sideBarStore.collapse}">
+      <PageTabs></PageTabs>
       <!-- :class="{'content-collapse':true/false}"" 用单引号的吗-->
       <div class="content">
         <router-view></router-view>
@@ -12,6 +13,7 @@
 </template>
 
 <script lang="ts" setup>
+  import PageTabs from '@/components/PageTabs.vue';
   import SideBar from '@/components/SideBar.vue';
   import Header from '@/components/HeaderTab.vue';
   import {useSideBarStore} from "../stores/sideBar"
