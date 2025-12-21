@@ -1,10 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeTest from "@/views/HomeTest.vue"
-import ManageTest from '@/views/ManageTest.vue'
+import Dashboard from '@/views/DashBoard.vue'
 // import component from 'element-plus/es/components/tree-select/src/tree-select-option.mjs'
 const routes=[{
   path:'/',
-  redirect:"/manage"
+  redirect:"/dashboard"
   // 这两条的意思是一开始不是/吗，给他转到/manage里边去
   //因为没有默认子路由,引出来个默认的子路由
 },
@@ -15,11 +15,11 @@ const routes=[{
   // 牢牢记住，路由嵌套是需要routerview在父路由里展示的
   children:[
     {
-      path:"/manage",
-      name:"manage",
-      component:ManageTest,
+      path:"/dashboard",
+      name:"dashboard",
+      component:Dashboard,
       meta:{
-        title:"系统管理",
+        title:"系统首页",
       }
     },
     {

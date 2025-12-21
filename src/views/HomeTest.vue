@@ -40,4 +40,7 @@
   .content-collapse{
     left:60px;
   }
+  .content{
+    padding:20px;
+  }
 </style>

@@ -32,9 +32,11 @@ console.log("当前路径",route.path);
 const router=useRouter()
 //router用于操作,push跳转,replace,to,back
 
-const activeName = ref('/manage')
+const activeName = ref('/dashboard')
 
 function closeTabs(Path){
+
+  //自创
   const index=tabs.list.findIndex((item)=>item.path===Path)
   if(tabs.list[index-1]||tabs.list[index+1]){
       tabs.delTagItem(index)
@@ -43,11 +45,18 @@ function closeTabs(Path){
       router.push(item?item.path:"/")
         //如果上一个也不存在，那么就默认系统管理
   }
-  else if(tabs.list[index]?.path!=="/manage"){
+  else if(tabs.list[index]?.path!=="/dashboard"){
       tabs.delTagItem(index)
-      router.push("/manage")
+      router.push("/dashboard")
   }
-  //我在原有基础上自创的逻辑,只有systemmanage时无法删除
+  //我在原有基础上自创的逻辑,只有systemdashboard时无法删除
+
+  //原逻辑
+  // const index = tabs.list.findIndex((item) => item.path === Path);
+  //   tabs.delTagItem(index);
+  //   const item = tabs.list[index] || tabs.list[index - 1];
+  //   router.push(item ? item.path : '/');
+
 }
 
 function clickTabs(item){
@@ -85,6 +94,6 @@ onBeforeRouteUpdate((to)=>{
   font-weight: 600;
 }
 .demo-tabs{
-  height:28px;
+  height:40px;
 }
 </style>
