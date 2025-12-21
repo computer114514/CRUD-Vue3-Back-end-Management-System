@@ -5,6 +5,7 @@
     class="demo-tabs"
     @tab-click="clickTabs"
     closable
+    @tab-remove="closeTabs"
   >
     <el-tab-pane
     v-for="item in tabs.list"
@@ -32,6 +33,22 @@ const router=useRouter()
 //router用于操作,push跳转,replace,to,back
 
 const activeName = ref('/manage')
+
+function closeTabs(Path){
+  const index=tabs.list.findIndex((item)=>item.path===Path)
+  if(tabs.list[index-1]||tabs.list[index+1]){
+      tabs.delTagItem(index)
+      const item=tabs.list[index]||tabs.list[index-1];
+        //这是下一个或者上一个，默认下一个
+      router.push(item?item.path:"/")
+        //如果上一个也不存在，那么就默认系统管理
+  }
+  else if(tabs.list[index]?.path!=="/manage"){
+      tabs.delTagItem(index)
+      router.push("/manage")
+  }
+  //我在原有基础上自创的逻辑,只有systemmanage时无法删除
+}
 
 function clickTabs(item){
     //item是路由实例，带有props属性(标签上你给他传入的属性)

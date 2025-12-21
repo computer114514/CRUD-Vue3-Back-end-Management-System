@@ -20,6 +20,10 @@ export const useTabsStore=defineStore("tabs",{
       setTagItem(data:ListItem){
         this.list.push(data);
         //在store里不要用箭头函数,不然就会this报错，因为this没有this，无法自动绑定
+      },
+      delTagItem(index:number){
+        this.list.splice(index,1)
+        console.log("删除之后list的样子",this.list)
       }
     }
 })
