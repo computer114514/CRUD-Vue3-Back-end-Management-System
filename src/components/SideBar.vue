@@ -61,8 +61,8 @@ console.log("昏迷状态是什么呢",sideBarStore.collapse);
     margin-right:20px;
   }
   .el-menu{
-    /* height:calc(100% - 70px); */
-    min-height:100%;
+    height:calc(100% - 70px);
+    /* height:100%; */
     position:absolute;
     left:0;
     top:70px;

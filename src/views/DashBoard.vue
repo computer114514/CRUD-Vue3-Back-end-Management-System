@@ -95,7 +95,20 @@
         <div  class="rank-item"
         v-for="(rank,index) in ranks"
         :key="index">
-          <div>{{ index+1 }}</div>
+          <div class="rank-item-number">{{ index+1 }}</div>
+          <div class="rank-item-content">
+            <div class="rank-item-top">
+              <div class="rank-item-title">{{ rank.title }}</div>
+              <div class="rank-item-desc">销量:{{ rank.value }}</div>
+            </div>
+          <el-progress
+            :show-text="false"
+            :percentage="rank.percent"
+            :color="rank.color"
+            :stroke-width="10"
+            striped
+            />
+          </div>
       </div>
       </el-card></el-col>
     </el-row>
@@ -280,6 +293,9 @@ const ranks = [
     width: 100%;
     height: 350px;
 }
+.el-timeline-item{
+  padding-bottom: 13px;
+}
 .timeline-item{
   display: flex;
   justify-content: space-between;
@@ -292,5 +308,33 @@ const ranks = [
 }
 .timeline-title{
   font-size:20px;
+}
+.rank-item{
+  display:flex;
+  margin-bottom: 20px;
+}
+.rank-item-number{
+  height:50px;
+  width:50px;
+  border-radius: 50%;
+background-color: #F2F2F2;
+text-align: center;
+line-height: 50px;
+}
+.rank-item-top{
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  margin-bottom: 10px;
+}
+.rank-item-title{
+  font-size:16px;
+}
+.rank-item-desc{
+    color:#999;
+  font-size:14px;
+}
+.rank-item-content{
+  flex:1;
 }
 </style>

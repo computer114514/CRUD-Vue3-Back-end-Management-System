@@ -1,5 +1,6 @@
 <template>
-  <el-tabs
+  <div class="tabs-container">
+    <el-tabs
     v-model="activeName"
     type="border-card"
     class="demo-tabs"
@@ -17,6 +18,7 @@
     <!-- label就是el-tab-pane的名字啊 -->
     </el-tab-pane>
   </el-tabs>
+  </div>
 </template>
 
 <script lang="ts" setup>

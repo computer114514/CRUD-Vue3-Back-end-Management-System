@@ -21,10 +21,15 @@
 </script>
 
 <style scoped>
+  .wrapper{
+    height:100vh;
+    overflow: hidden;
+  }
   .container{
     /* width: calc(100% - 200px); */
-    width:auto;
+    /* width:auto; */
     /* min-width:100%; 好知识点！min-width啊*/
+    bottom: 0;
     /* calc自动计算剩余空间容量 一定要有空格*/
     position: absolute;
     top:70px;
@@ -32,7 +37,6 @@
     /* 绝对定位加width自动，这样就能自动调整宽度了 */
     right:0;
     /* height:calc(100% - 70px); */
-    min-height:100%;
     overflow: hidden;
     background-color: #EEF0FC;
     transition:left 0.3s ease-in-out;
@@ -41,6 +45,14 @@
     left:60px;
   }
   .content{
+    overflow-y: scroll;
+    /* overflow-y生效必须要有高度 */
     padding:20px;
+    box-sizing: border-box;
+    width: auto;
+    height: calc(100% - 40px);
+  }
+  .content::-webkit-scrollbar{
+    width:0;
   }
 </style>
